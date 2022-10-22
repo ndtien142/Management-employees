@@ -1,16 +1,32 @@
-import { Container, Grid, Typography } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Typography,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 import { Box } from "@mui/system";
-import React, { Fragment, useContext } from "react";
+import React, { useContext, useState } from "react";
 import CardEmployee from "../components/UI/Card";
 import Navbar from "../components/UI/Navbar";
 import EmployeeContext from "../context/EmployeeContext";
 
 function Home() {
   const { employees } = useContext(EmployeeContext);
+  const [mode, setMode] = useState("light");
+  const customerTheme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
 
   return (
-    <Fragment>
-      <Navbar variantButton="home"></Navbar>
+    <ThemeProvider theme={customerTheme}>
+      <Navbar
+        variantButton="home"
+        changeMode={(data) => setMode(data)}
+        mode={mode}
+      ></Navbar>
       <Container>
         <Box>
           <Typography mt={2} variant="h3" align="center">
@@ -28,7 +44,7 @@ function Home() {
           </Grid>
         </Box>
       </Container>
-    </Fragment>
+    </ThemeProvider>
   );
 }
 

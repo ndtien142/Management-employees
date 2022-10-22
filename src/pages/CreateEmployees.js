@@ -8,9 +8,11 @@ import {
   Typography,
   Snackbar,
   Alert,
+  createTheme,
+  ThemeProvider,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import React, { Fragment, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Box } from "@mui/system";
 import Navbar from "../components/UI/Navbar";
 import EmployeeContext from "../context/EmployeeContext";
@@ -28,6 +30,13 @@ function CreateEmployees() {
   const [detailsError, setDetailsError] = useState(false);
   const { createEmployee } = useContext(EmployeeContext);
   const [snackbar, setSnackbar] = useState(false);
+
+  const [mode, setMode] = useState("light");
+  const customerTheme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,8 +77,12 @@ function CreateEmployees() {
     }
   };
   return (
-    <Fragment>
-      <Navbar variantButton="create"></Navbar>
+    <ThemeProvider theme={customerTheme}>
+      <Navbar
+        variantButton="create"
+        changeMode={(data) => setMode(data)}
+        mode={mode}
+      ></Navbar>
       <Container>
         <Typography variant="h3" align="center" gutterBottom>
           Create a new Employees
@@ -148,7 +161,7 @@ function CreateEmployees() {
           <Alert severity="success">Created new employee successfully!</Alert>
         </Snackbar>
       </Container>
-    </Fragment>
+    </ThemeProvider>
   );
 }
 
