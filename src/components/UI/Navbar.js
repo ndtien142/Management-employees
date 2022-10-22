@@ -4,7 +4,7 @@ import React from "react";
 function Navbar() {
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar sx={{ gap: 2 }}>
         <Typography variant="h5" sx={{ flexGrow: 1 }} align="left">
           Management Employees
         </Typography>

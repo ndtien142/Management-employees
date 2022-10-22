@@ -94,7 +94,7 @@ function CreateEmployees() {
               label="PartTime"
             />
             <FormControlLabel
-              value="full-time"
+              value="fulltime"
               control={<Radio />}
               label="Fulltime"
             />
