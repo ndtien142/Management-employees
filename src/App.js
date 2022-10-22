@@ -5,13 +5,11 @@ import EditEmployees from "./pages/EditEmployees";
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" exact element={<Home />}></Route>
-        <Route path="/create-user" element={<CreateEmployees />}></Route>
-        <Route path="/edit-user" element={<EditEmployees />}></Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" exact element={<Home />}></Route>
+      <Route path="/create-user" element={<CreateEmployees />}></Route>
+      <Route path="/edit-user" element={<EditEmployees />}></Route>
+    </Routes>
   );
 }
 
